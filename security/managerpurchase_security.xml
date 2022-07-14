@@ -26,7 +26,7 @@
             <field name="perm_write" eval="0"/>
             <field name="perm_create" eval="0"/>
             <field name="perm_unlink" eval="1"/>
-            <field name="domain_force">[("state","=","Draft")]</field>
+            <field name="domain_force">[("state","=","draft")]</field>
         </record>
     </data>
 </odoo>

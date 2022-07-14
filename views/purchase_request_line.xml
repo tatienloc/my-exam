@@ -23,12 +23,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="request_id"/>
-                            <field name="product_id"/>
+                            <field name="request_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="product_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
                             <field name="total"/>
                         </group>
                         <group>
-                            <field name="uom_id"/>
+                            <field name="uom_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
                             <field name="qty"/>
                             <field name="qty_approve"/>
                         </group>
@@ -46,7 +46,8 @@
     </record>
 
     <menuitem id="purchase_request_line_menu"
-              parent="purchase_request_menu_root"
+              parent="purchase_request_menu"
               name="Purchase request line"
-              action="purchase_request_line_action"/>
+              action="purchase_request_line_action"
+              groups="group_purchase_request_user,group_purchase_request_manager"/>
 </odoo>
