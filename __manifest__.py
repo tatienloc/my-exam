@@ -30,6 +30,7 @@
         'views/purchase_request.xml',
         'views/sequence.xml',
         'views/purchase_request_line.xml',
+        # 'report/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
