@@ -26,9 +26,9 @@
     'data': [
         'security/managerpurchase_security.xml',
         'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'wizard/lost_reason.xml',
         'views/purchase_request.xml',
+        'views/sequence.xml',
         'views/purchase_request_line.xml',
     ],
     # only loaded in demonstration mode

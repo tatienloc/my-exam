@@ -5,6 +5,7 @@
         <field name="model">purchase.request</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name" readonly="1"/>
                 <field name="department_id"/>
                 <field name="approver_id"/>
                 <field name="date"/>
@@ -19,11 +20,21 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="request_user" state="draft" string="Request" type="object" class="oe_highlight"/>
+                    <button name="request_user" state="draft" string="Request" type="object" class="oe_highlight"
+                            attrs="{'invisible' : [('state' , '!=' , 'draft')]}" groups="managerpurchase.group_purchase_request_user"/>
+                    <button name="back_draft" state="wait" string="Back" type="object" class="oe_highlight"
+                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}" groups="managerpurchase.group_purchase_request_user"/>
+                    <button name="manager_approve" state="wait" string="Approve" type="object" class="oe_highlight"
+                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}" groups="managerpurchase.group_purchase_request_manager"/>
+                    <button name="%(managerpurchase.purchase_request_lost_action)d" state="wait" string="Mark lost" type="action" class="oe_highlight"
+                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}" />
                     <field name="state" widget="statusbar" statusbar_visible="draft,wait,approved,cancel" readonly="1"/>
                 </header>
                 <sheet>
                     <group>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
                         <separator string="General stuff" colspan="2"/>
                         <field name="department_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
                         <group>
