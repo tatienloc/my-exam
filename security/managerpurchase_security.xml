@@ -18,15 +18,16 @@
         </record>
     </data>
 
-    <data>
-        <record id="purchase_request_rule" model="ir.rule">
-            <field name="name">Only detele </field>
-            <field name="model_id" ref="model_purchase_request"/>
-            <field name="perm_read" eval="0"/>
-            <field name="perm_write" eval="0"/>
-            <field name="perm_create" eval="0"/>
-            <field name="perm_unlink" eval="1"/>
-            <field name="domain_force">[("state","=","draft")]</field>
-        </record>
-    </data>
+<!--    <data>-->
+<!--        <record id="purchase_request_rule_" model="ir.rule">-->
+<!--            <field name="name">Only detele </field>-->
+<!--            <field name="model_id" ref="model_purchase_request"/>-->
+<!--            <field name="perm_read" eval="0"/>-->
+<!--            <field name="perm_write" eval="0"/>-->
+<!--            <field name="perm_create" eval="0"/>-->
+<!--            <field name="perm_unlink" eval="1"/>-->
+<!--            <field name="domain_force">[("state","=","draft")]</field>-->
+<!--        </record>-->
+<!--    </data>-->
+
 </odoo>

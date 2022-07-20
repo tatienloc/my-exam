@@ -20,18 +20,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','report_xlsx','hr'],
 
     # always loaded
     'data': [
         'security/managerpurchase_security.xml',
         'security/ir.model.access.csv',
+        'report/purchase_report.xml',
         'wizard/lost_reason.xml',
         'views/purchase_request.xml',
         'views/sequence.xml',
         'views/purchase_request_line.xml',
-        # 'report/report.xml',
-    ],
+],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

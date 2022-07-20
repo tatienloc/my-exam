@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report id="report_purchase_card_xlsx"
+            model="purchase.request"
+            string="Purchase card Excel"
+            report_type="xlsx"
+            name="managerpurchase.report_purchase_card_xlsx"
+            file="managerpurchase.report_purchase_card_xlsx"
+            attachment_use="False"/>
+</odoo>
