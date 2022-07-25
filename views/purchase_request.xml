@@ -21,14 +21,21 @@
             <form>
                 <header>
                     <button name="request_user" state="draft" string="Request" type="object" class="oe_highlight"
-                            attrs="{'invisible' : [('state' , '!=' , 'draft')]}" groups="managerpurchase.group_purchase_request_user"/>
+                            attrs="{'invisible' : [('state' , '!=' , 'draft')]}"
+                            groups="managerpurchase.group_purchase_request_user"/>
                     <button name="back_draft" state="wait" string="Back" type="object" class="oe_highlight"
-                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}" groups="managerpurchase.group_purchase_request_user"/>
+                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}"
+                            groups="managerpurchase.group_purchase_request_user"/>
                     <button name="manager_approve" state="wait" string="Approve" type="object" class="oe_highlight"
-                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}" groups="managerpurchase.group_purchase_request_manager"/>
-                    <button name="%(managerpurchase.purchase_request_lost_action)d" state="wait" string="Mark lost" type="action" class="oe_highlight"
-                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}" groups="managerpurchase.group_purchase_request_manager"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,wait,approved,cancel" readonly="1"/>
+                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}"
+                            groups="managerpurchase.group_purchase_request_manager"/>
+                    <button name="%(managerpurchase.purchase_request_lost_action)d" state="wait" string="Mark lost"
+                            type="action" class="oe_highlight"
+                            attrs="{'invisible' : [('state' , '!=' , 'wait')]}"
+                            groups="managerpurchase.group_purchase_request_manager"/>
+                    <button name="quote" state="approved" string="New Quotation" type="object" class="oe_hignlight"
+                            attrs="{'invisible' : [('state' , '!=' , 'approved')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,wait,approved" readonly="1"/>
                 </header>
                 <sheet>
                     <group>

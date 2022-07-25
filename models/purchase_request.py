@@ -7,17 +7,25 @@ class Purchaserequest(models.Model):
 
     name = fields.Char( required=True, index=True, copy=False,
                        default='New')
-    department_id = fields.Many2one("hr.department", string="Department", required=True)
-    request_id = fields.Many2one("res.users" , string="Requester" , required=True )
-    approver_id = fields.Many2one("res.users", string="Approver" , required=True )
+    department_id = fields.Many2one("hr.department", string="Department")
+    request_id = fields.Many2one("res.users" , string="Requester")
+    approver_id = fields.Many2one("res.users", string="Approver" )
     date = fields.Date(string="Date", default=fields.Date.today() , readonly=True )
-    date_approve = fields.Date(string="Date approve" , required=True)
+    date_approve = fields.Date(string="Date approve" )
     request_line_ids =fields.Many2many("purchase.request.line" , string="Request line" )
-    description = fields.Text(string="Description" )
+    description = fields.Text(string="Description")
     state = fields.Selection([("draft", "Draft"), ("wait", "Wait"), ("approved", "Approved"), ("cancel", "Cancel")],
                              default="draft" , required=True)
     total_qty = fields.Float(string="Total qty" , compute="_compute_total_qty" , readonly=True )
     total_amount = fields.Float(string="Total amount" , compute="_compute_total_amount" , readonly=True)
+
+    def quote(self):
+        return {
+            'res_model' : 'sale.order',
+            'type' : 'ir.actions.act_window',
+            'view_mode' : 'form',
+            'view_type' : 'form',
+        }
 
     #tính total qty , total amount
     @api.depends("request_line_ids")
@@ -64,9 +72,12 @@ class Purchaserequest(models.Model):
             else:
                 raise ValidationError("You cannot detete %s as it is in %s status" %(self.name ,self.state))
 
-    def write(self, vals):
-        for r in self:
-            if r.state == 'draft':
-                return super(Purchaserequest,self).write(vals)
-            else:
-                raise ValidationError("You cannot write %s as it is %s status" %(self.name ,self.state))
+    # #tắt sửa ở status =! draft
+    # def write(self, vals):
+    #     for r in self:
+    #         if r.state == 'draft':
+    #             return super(Purchaserequest,self).write(vals)
+    #         else:
+    #             raise ValidationError("You cannot write %s as it is %s status" %(self.name ,self.state))
+
+
